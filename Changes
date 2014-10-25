@@ -1,5 +1,10 @@
 Revision history for Crypt-Image
 
+0.05  Sat Oct 25 06:52:20 2014
+      - Restructured the code using 'Moo'.
+      - Added section 'Repository' to the pod document.
+      - Removed the dependency on 'Readonly'.
+
 0.04  Sat Oct 25 05:15:00 2014
       - Removed the Build.PL file.
       - Removed the dependency on Carp::Always package.

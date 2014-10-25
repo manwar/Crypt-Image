@@ -7,6 +7,7 @@ README
 lib/Crypt/Image.pm
 lib/Crypt/Image/Axis.pm
 lib/Crypt/Image/Util.pm
+lib/Crypt/Image/Params.pm
 t/00-load.t
 t/01-new.t
 t/02-encrypt.t

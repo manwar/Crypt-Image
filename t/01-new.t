@@ -5,7 +5,7 @@ use Crypt::Image;
 use Test::More tests => 2;
 
 eval { Crypt::Image->new() };
-like($@, qr/Attribute \(file\) is required/);
+like($@, qr/Missing required arguments: file/);
 
 eval { Crypt::Image->new(file => 't/key.pgn') };
-like($@, qr/Attribute \(file\) does not pass the type constraint/);
+like($@, qr/isa check for "file" failed/);

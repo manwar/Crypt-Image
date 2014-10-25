@@ -1,10 +1,6 @@
 package Crypt::Image::Util;
 
-use strict; use warnings;
-
-use Data::Dumper;
-use Math::Random;
-use Crypt::Image::Axis;
+$Crypt::Image::Util::VERSION = '0.05';
 
 =head1 NAME
 
@@ -12,11 +8,16 @@ Crypt::Image::Util - Helper for Crypt::Image module.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+use 5.006;
+use Data::Dumper;
+
+use autodie;
+use Math::Random;
+use Crypt::Image::Axis;
 
 =head1 DESCRIPTION
 
@@ -26,20 +27,21 @@ Utility module for Crypt::Image. Methods can be accessed directly.
 
 =head2 cloneImage()
 
-Clone the given image (object of type GD::Image) and returns the clone of type GD::Image.
+It clone the given image (object of type GD::Image) and returns the clone of type
+GD::Image.
 
 =cut
 
-sub cloneImage
-{
-    my $image = shift;
+sub cloneImage {
+    my ($image) = @_;
+
     return $image->clone;
 }
 
 =head2 saveImage()
 
-Saves the given image data as given  file  name  of  the given type. The parameters are listed
-below in sequence:
+Saves the given image data as given file  name  of the given type. The parameters
+are listed below in sequence:
 
 =over 3
 
@@ -53,14 +55,10 @@ below in sequence:
 
 =cut
 
-sub saveImage
-{
-    my $file  = shift;
-    my $image = shift;
-    my $type  = shift;
+sub saveImage {
+    my ($file, $image, $type) = @_;
 
-    open(IMAGE, ">$file")
-        || die("ERROR: Couldn't open file [$file] for writing. [$!]\n");
+    open(IMAGE, ">$file");
     binmode IMAGE;
     print IMAGE $image->png  if $type =~ /png/i;
     print IMAGE $image->gif  if $type =~ /gif/i;
@@ -74,10 +72,8 @@ Moves the given pixel down by given number.
 
 =cut
 
-sub moveDown
-{
-    my $this = shift;
-    my $by   = shift;
+sub moveDown {
+    my ($this, $by) = @_;
 
     ($this < 128)?($this += $by):($this -= $by);
     return $this;
@@ -89,10 +85,8 @@ Moves the given pixel up by given number.
 
 =cut
 
-sub moveUp
-{
-    my $this = shift;
-    my $by   = shift;
+sub moveUp {
+    my ($this, $by) = @_;
 
     ($this >= 128)?($this -= $by):($this += $by);
     return $this;
@@ -104,11 +98,8 @@ Returns the color index for the given R, G and B.
 
 =cut
 
-sub getColor
-{
-    my $r = shift;
-    my $g = shift;
-    my $b = shift;
+sub getColor {
+    my ($r, $g, $b) = @_;
 
     my $image = GD::Image->new();
     return $image->colorAllocate($r, $g, $b);
@@ -116,48 +107,48 @@ sub getColor
 
 =head2 splitInTwo()
 
-Splits the given point into X,Y coordinates & returns an object of type Crypt::Image::Axis.
+It  splits  the  given  point into X, Y coordinates and returns an object of type
+Crypt::Image::Axis.
 
 =cut
 
-sub splitInTwo
-{
-    my $a = shift;
+sub splitInTwo {
+    my ($a) = @_;
+
     my $r = int(random_uniform() * $a);
     $a -= $r;
-    return Crypt::Image::Axis->new(x => $a, y => $r);
+    return Crypt::Image::Axis->new('x' => $a, 'y' => $r);
 }
 
 =head2 splitInThree()
 
-Splits the given point into X,Y,Z coordinates & returns an object of type Crypt::Image::Axis.
+It splits the given point into X, Y, Z coordinates  and returns an object of type
+L<Crypt::Image::Axis>.
 
 =cut
 
-sub splitInThree
-{
-    my $a = shift;
+sub splitInThree {
+    my ($a) = @_;
+
     my $z = 0;
     my $r = int(random_uniform() * $a);
     $a -= $r;
-    if ($a > $r)
-    {
+    if ($a > $r) {
         $z = int(random_uniform() * $a);
         $a -= $z;
     }
-    else
-    {
+    else {
         $z = int(random_uniform() * $r);
         $r -= $z;
     }
 
-    return Crypt::Image::Axis->new(x => $a, y => $r, z => $z);
+    return Crypt::Image::Axis->new('x' => $a, 'y' => $r, 'z' => $z);
 }
 
 =head2 differenceInAxis()
 
-Returns the absolute difference in the R, G and B of the given key and cloned  images at X & Y
-coordinates. The parameters are listed below in sequence:
+It returns the absolute difference in the R, G and B of the given  key and cloned
+images at X and Y coordinates. The parameters are listed below in sequence:
 
 =over 4
 
@@ -173,12 +164,8 @@ coordinates. The parameters are listed below in sequence:
 
 =cut
 
-sub differenceInAxis
-{
-    my $k = shift;
-    my $c = shift;
-    my $x = shift;
-    my $y = shift;
+sub differenceInAxis {
+    my ($k, $c, $x, $y) = @_;
 
     my ($k_r, $k_g, $k_b) = Crypt::Image::Util::getPixelColorRGB($k, $x, $y);
     my ($c_r, $c_g, $c_b) = Crypt::Image::Util::getPixelColorRGB($c, $x, $y);
@@ -188,8 +175,8 @@ sub differenceInAxis
 
 =head2 getPixelColorRGB()
 
-Returns the R, G, B of the given image at the given X,Y coordinates. The parameters are listed
-below in sequence:
+Returns the R,G,B of the given image at the given X,Y coordinates. The parameters
+are listed below in sequence:
 
 =over 3
 
@@ -203,11 +190,8 @@ below in sequence:
 
 =cut
 
-sub getPixelColorRGB
-{
-    my $image = shift;
-    my $x = shift;
-    my $y = shift;
+sub getPixelColorRGB {
+    my ($image, $x, $y) = @_;
 
     my $index = $image->getPixel($x, $y);
     my ($r, $g, $b) = $image->rgb($index);
@@ -218,11 +202,18 @@ sub getPixelColorRGB
 
 Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
 
+Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
+
+=head1 REPOSITORY
+
+L<https://github.com/Manwar/Crypt-Image>
+
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-crypt-image at rt.cpan.org> or through the
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Crypt-Image>.  I will be
-notified, and then you'll automatically be notified of progress on your bug as I make changes.
+Please report any bugs / feature requests to C<bug-crypt-image at rt.cpan.org> or
+through the the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Crypt-Image>.
+I will be notified, and then you'll automatically be notified of progress on your
+bug as I make changes.
 
 =head1 SUPPORT
 
@@ -254,18 +245,41 @@ L<http://search.cpan.org/dist/Crypt-Image/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2011 Mohammad S Anwar.
+Copyright 2011 - 2014 Mohammad S Anwar.
 
-This  program  is  free  software; you can redistribute it and/or modify it under the terms of
-either:  the  GNU  General Public License as published by the Free Software Foundation; or the
-Artistic License.
+This  program  is  free software; you can redistribute it and/or modify it under
+the  terms  of the the Artistic License (2.0). You may obtain a copy of the full
+license at:
 
-See http://dev.perl.org/licenses/ for more information.
+L<http://www.perlfoundation.org/artistic_license_2_0>
 
-=head1 DISCLAIMER
+Any  use,  modification, and distribution of the Standard or Modified Versions is
+governed by this Artistic License.By using, modifying or distributing the Package,
+you accept this license. Do not use, modify, or distribute the Package, if you do
+not accept this license.
 
-This  program  is  distributed in the hope that it will be useful,  but  WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+If your Modified Version has been derived from a Modified Version made by someone
+other than you,you are nevertheless required to ensure that your Modified Version
+ complies with the requirements of this license.
+
+This  license  does  not grant you the right to use any trademark,  service mark,
+tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge patent license
+to make,  have made, use,  offer to sell, sell, import and otherwise transfer the
+Package with respect to any patent claims licensable by the Copyright Holder that
+are  necessarily  infringed  by  the  Package. If you institute patent litigation
+(including  a  cross-claim  or  counterclaim) against any party alleging that the
+Package constitutes direct or contributory patent infringement,then this Artistic
+License to you shall terminate on the date that such litigation is filed.
+
+Disclaimer  of  Warranty:  THE  PACKAGE  IS  PROVIDED BY THE COPYRIGHT HOLDER AND
+CONTRIBUTORS  "AS IS'  AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. THE IMPLIED
+WARRANTIES    OF   MERCHANTABILITY,   FITNESS   FOR   A   PARTICULAR  PURPOSE, OR
+NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY YOUR LOCAL LAW. UNLESS
+REQUIRED BY LAW, NO COPYRIGHT HOLDER OR CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL,  OR CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE
+OF THE PACKAGE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
