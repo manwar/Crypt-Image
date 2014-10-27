@@ -1,6 +1,6 @@
 package Crypt::Image::Axis;
 
-$Crypt::Image::Axis::VERSION = '0.05';
+$Crypt::Image::Axis::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Crypt::Image::Axis - Coordinates of the image used in the Crypt::Image.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 

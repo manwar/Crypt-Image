@@ -14,6 +14,7 @@ t/02-encrypt.t
 t/03-decrypt.t
 t/manifest.t
 t/pod.t
+t/changes.t
 t/key.png
 t/key.gif
 t/key.jpg

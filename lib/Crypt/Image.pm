@@ -1,6 +1,6 @@
 package Crypt::Image;
 
-$Crypt::Image::VERSION = '0.05';
+$Crypt::Image::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Crypt::Image - Interface to hide text into an image.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
