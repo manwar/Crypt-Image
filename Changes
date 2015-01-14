@@ -1,5 +1,13 @@
 Revision history for Crypt-Image
 
+0.07  2015-01-14T19:45:00+01:00
+      - Updated Makefile.PL to generate the key 'provides' for META file correctly.
+      - Added unit test to test META files.
+      - Removed SIGNATURE file.
+      - Added LICENSE file.
+      - Updated Copyright year information.
+      - Tidied up the test scripts in general.
+
 0.06  2014-10-27T23:55:25+01:00
       - Updated Changes file according to CPAN::Changes::Spec package.
       - Added unit test changes.t file.

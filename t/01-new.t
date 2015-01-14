@@ -1,5 +1,6 @@
 #!perl
 
+use 5.006;
 use strict; use warnings;
 use Crypt::Image;
 use Test::More tests => 2;

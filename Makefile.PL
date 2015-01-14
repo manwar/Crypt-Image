@@ -29,6 +29,12 @@ WriteMakefile(
     clean => { FILES => 'Crypt-Image-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
+        provides    => {
+            'Crypt::Image'         => { file => 'lib/Crypt/Image.pm',        version => '0.07' },
+            'Crypt::Image::Axis'   => { file => 'lib/Crypt/Image/Axis.pm',   version => '0.07' },
+            'Crypt::Image::Util'   => { file => 'lib/Crypt/Image/Util.pm',   version => '0.07' },
+            'Crypt::Image::Params' => { file => 'lib/Crypt/Image/Params.pm', version => '0.07' },
+        },
         resources => {
             repository => {
                 type => 'git',

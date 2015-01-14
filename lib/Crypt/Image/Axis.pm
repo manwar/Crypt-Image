@@ -1,6 +1,6 @@
 package Crypt::Image::Axis;
 
-$Crypt::Image::Axis::VERSION = '0.06';
+$Crypt::Image::Axis::VERSION = '0.07';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Crypt::Image::Axis - Coordinates of the image used in the Crypt::Image.
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
@@ -72,7 +72,7 @@ L<http://search.cpan.org/dist/Crypt-Image/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2011 - 2014 Mohammad S Anwar.
+Copyright (C) 2011 - 2015 Mohammad S Anwar.
 
 This  program  is  free software; you can redistribute it and/or modify it under
 the  terms  of the the Artistic License (2.0). You may obtain a copy of the full

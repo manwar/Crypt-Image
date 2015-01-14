@@ -1,7 +1,7 @@
 Changes
+LICENSE
 MANIFEST
 MANIFEST.SKIP
-SIGNATURE
 Makefile.PL
 README
 lib/Crypt/Image.pm
@@ -18,3 +18,5 @@ t/changes.t
 t/key.png
 t/key.gif
 t/key.jpg
+t/meta-json.t
+t/meta-yml.t
