@@ -1,6 +1,6 @@
 package Crypt::Image::Util;
 
-$Crypt::Image::Util::VERSION = '0.07';
+$Crypt::Image::Util::VERSION = '0.08';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Crypt::Image::Util - Helper for Crypt::Image module.
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 

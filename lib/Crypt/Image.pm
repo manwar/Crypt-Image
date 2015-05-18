@@ -1,6 +1,6 @@
 package Crypt::Image;
 
-$Crypt::Image::VERSION = '0.07';
+$Crypt::Image::VERSION = '0.08';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Crypt::Image - Interface to hide text into an image.
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
@@ -69,7 +69,7 @@ sub BUILD {
 
 =head1 METHODS
 
-=head2 encrypt()
+=head2 encrypt($message, $encrypted_image_name)
 
 Encrypts the key image (of type PNG currently) with the given text and save it as
 the new image by the given file name. The  length  of  the given text  depends on
@@ -116,7 +116,7 @@ sub encrypt {
     Crypt::Image::Util::saveImage($file, $self->{copy}, $self->{type});
 }
 
-=head2 decrypt()
+=head2 decrypt($encrypted_image)
 
 Decrypts the given encrypted image and returns the hidden text.
 
@@ -275,7 +275,7 @@ L<http://search.cpan.org/dist/Crypt-Image/>
 
 =head1 ACKNOWLEDGEMENT
 
-Joonas Vali, author of the L<blog|http://forum.codecall.net/classes-code-snippets/18135-java-encrypt-text-into-image.html>
+Joonas Vali, author of the L<blog|http://forum.codecall.net/topic/48613-java-encrypt-text-into-an-image/>
 gave me the idea for this module.
 
 =head1 LICENSE AND COPYRIGHT
