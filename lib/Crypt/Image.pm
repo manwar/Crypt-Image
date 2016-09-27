@@ -1,6 +1,7 @@
 package Crypt::Image;
 
-$Crypt::Image::VERSION = '0.08';
+$Crypt::Image::VERSION   = '0.09';
+$Crypt::Image::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
 
@@ -8,7 +9,7 @@ Crypt::Image - Interface to hide text into an image.
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 
@@ -236,7 +237,7 @@ Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
 
 =head1 REPOSITORY
 
-L<https://github.com/Manwar/Crypt-Image>
+L<https://github.com/manwar/Crypt-Image>
 
 =head1 BUGS
 
@@ -280,7 +281,7 @@ gave me the idea for this module.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2011 - 2015 Mohammad S Anwar.
+Copyright (C) 2011 - 2016 Mohammad S Anwar.
 
 This  program  is  free software; you can redistribute it and/or modify it under
 the  terms  of the the Artistic License (2.0). You may obtain a copy of the full

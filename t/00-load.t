@@ -10,3 +10,5 @@ BEGIN {
     use_ok('Crypt::Image::Util')   || print "Bail out!";
     use_ok('Crypt::Image::Params') || print "Bail out!";
 }
+
+diag("Testing Crypt::Image $Crypt::Image::VERSION, Perl $], $^X");

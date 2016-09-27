@@ -1,4 +1,8 @@
-Revision history for Crypt-Image
+Revision history for Crypt::Image
+
+0.09  2016-09-27T07:00:00+01:00
+      - Updated copyright year information.
+      - Tidied up unit test script t/00-load.t
 
 0.08  2015-05-18T10:50:00+01:00
       - Fixed the broken link in the section "ACKNOWLEDGEMENT".
