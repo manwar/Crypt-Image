@@ -9,4 +9,4 @@ eval { Crypt::Image->new() };
 like($@, qr/Missing required arguments: file/);
 
 eval { Crypt::Image->new(file => 't/key.pgn') };
-like($@, qr/isa check for "file" failed/);
+like($@, qr/Invalid file path/);

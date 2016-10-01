@@ -1,6 +1,6 @@
 package Crypt::Image;
 
-$Crypt::Image::VERSION   = '0.09';
+$Crypt::Image::VERSION   = '0.10';
 $Crypt::Image::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Crypt::Image - Interface to hide text into an image.
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
@@ -20,7 +20,8 @@ use GD::Image;
 use Math::Random;
 use POSIX qw/floor/;
 use Crypt::Image::Util;
-use Crypt::Image::Params qw($Num $FileType $FilePath $INTENSITY);
+use Types::Standard qw(Int);
+use Crypt::Image::Params qw(FileType FilePath);
 
 use Moo;
 use namespace::clean;
@@ -38,12 +39,14 @@ pixels are unrecognizable from trash data,which also changes randomly every time
 
 =cut
 
-has 'width'  => (is => 'ro', isa => $Num);
-has 'height' => (is => 'ro', isa => $Num);
-has 'file'   => (is => 'ro', isa => $FilePath, required => 1);
-has 'type'   => (is => 'ro', isa => $FileType, default => sub { return 'png'; });
-has 'bytes'  => (is => 'rw', isa => $Num);
-has 'countc' => (is => 'rw', isa => $Num);
+our $INTENSITY = 30;
+
+has 'width'  => (is => 'ro', isa => Int);
+has 'height' => (is => 'ro', isa => Int);
+has 'file'   => (is => 'ro', isa => FilePath, required => 1);
+has 'type'   => (is => 'ro', isa => FileType, default => sub { return 'png'; });
+has 'bytes'  => (is => 'rw', isa => Int);
+has 'countc' => (is => 'rw', isa => Int);
 
 =head1 CONSTRUCTOR
 

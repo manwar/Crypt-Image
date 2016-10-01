@@ -23,17 +23,19 @@ WriteMakefile(
         'autodie'          => 0,
         'Moo'              => '2.000000',
         'namespace::clean' => '0.24',
-
+        'Type::Library'    => '1.000005',
+        'Types::Standard'  => '1.000005',
+        'Type::Utils'      => '1.000005',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Crypt-Image-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
         provides    => {
-            'Crypt::Image'         => { file => 'lib/Crypt/Image.pm',        version => '0.09' },
-            'Crypt::Image::Axis'   => { file => 'lib/Crypt/Image/Axis.pm',   version => '0.09' },
-            'Crypt::Image::Util'   => { file => 'lib/Crypt/Image/Util.pm',   version => '0.09' },
-            'Crypt::Image::Params' => { file => 'lib/Crypt/Image/Params.pm', version => '0.09' },
+            'Crypt::Image'         => { file => 'lib/Crypt/Image.pm',        version => '0.10' },
+            'Crypt::Image::Axis'   => { file => 'lib/Crypt/Image/Axis.pm',   version => '0.10' },
+            'Crypt::Image::Util'   => { file => 'lib/Crypt/Image/Util.pm',   version => '0.10' },
+            'Crypt::Image::Params' => { file => 'lib/Crypt/Image/Params.pm', version => '0.10' },
         },
         resources => {
             repository => {

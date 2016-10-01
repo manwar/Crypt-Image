@@ -1,6 +1,6 @@
 package Crypt::Image::Axis;
 
-$Crypt::Image::Axis::VERSION   = '0.09';
+$Crypt::Image::Axis::VERSION   = '0.10';
 $Crypt::Image::Axis::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,20 +9,20 @@ Crypt::Image::Axis - Coordinates of the image used in the Crypt::Image.
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
 use 5.006;
 use Data::Dumper;
-use Crypt::Image::Params qw($Num);
+use Types::Standard qw(Int);
 
 use Moo;
 use namespace::clean;
 
-has 'x' => (is => 'ro', isa => $Num, required => 1);
-has 'y' => (is => 'ro', isa => $Num, required => 1);
-has 'z' => (is => 'ro', isa => $Num);
+has 'x' => (is => 'ro', isa => Int, required => 1);
+has 'y' => (is => 'ro', isa => Int, required => 1);
+has 'z' => (is => 'ro', isa => Int);
 
 =head1 DESCRIPTION
 

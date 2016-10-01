@@ -1,5 +1,8 @@
 Revision history for Crypt::Image
 
+0.10  2016-10-01T10:25:00+01:00
+      - Improved type definitions for 'FileType' and 'FilePath'.
+
 0.09  2016-09-27T07:00:00+01:00
       - Updated copyright year information.
       - Tidied up unit test script t/00-load.t

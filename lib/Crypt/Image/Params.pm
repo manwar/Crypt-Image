@@ -1,6 +1,6 @@
 package Crypt::Image::Params;
 
-$Crypt::Image::Params::VERSION   = '0.09';
+$Crypt::Image::Params::VERSION   = '0.10';
 $Crypt::Image::Params::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Crypt::Image::Params - Placeholder for parameters for Crypt::Image.
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
@@ -17,22 +17,21 @@ use 5.006;
 use strict; use warnings;
 use Data::Dumper;
 
-use vars qw(@ISA @EXPORT @EXPORT_OK);
+use Type::Library -base, -declare => qw(FileType FilePath);
+use Types::Standard qw(Str);
+use Type::Utils;
 
-require Exporter;
-@ISA = qw(Exporter);
-@EXPORT_OK = qw($FilePath $FileType $Num $INTENSITY);
+our $FILE_TYPE = { 'png' => 1 };
 
-our $INTENSITY = 30;
+declare 'FilePath',
+    as Str,
+    where   { -f $_[0] },
+    message { "ERROR: Invalid file path [$_[0]]" };
 
-our $Num = sub { return check_num($_[0]); };
-sub check_num  { die "ERROR: Invalid NUM data type [$_[0]]" unless (defined $_[0] && $_[0] =~ /^\d+$/); }
-
-our $FilePath = sub { die "ERROR: Invalid file path [$_[0]]" unless check_file_path($_[0]); };
-sub check_file_path { return (-f $_[0]) };
-
-my $FILE_TYPE = { 'png' => 1 };
-our $FileType = sub { die "ERROR: Invalid file type [$_[0]]" unless exists $FILE_TYPE->{lc($_[0])}; };
+declare 'FileType',
+    as Str,
+    where   { exists $FILE_TYPE->{lc($_[0])} },
+    message { "ERROR: Invalid file type [$_[0]]" };
 
 =head1 DESCRIPTION
 
