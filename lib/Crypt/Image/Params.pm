@@ -1,6 +1,6 @@
 package Crypt::Image::Params;
 
-$Crypt::Image::Params::VERSION   = '0.10';
+$Crypt::Image::Params::VERSION   = '0.11';
 $Crypt::Image::Params::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Crypt::Image::Params - Placeholder for parameters for Crypt::Image.
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
