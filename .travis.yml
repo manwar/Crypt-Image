@@ -1,6 +1,11 @@
 language: "perl"
+
 perl:
   - "5.20"
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libgd-dev
 
 install:
     - cpanm --notest -q Sparrow
