@@ -5,7 +5,7 @@ perl:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y libgd-dev
+  - sudo apt-get install -y libgd2-noxpm-dev
 
 install:
     - cpanm --notest -q Sparrow
