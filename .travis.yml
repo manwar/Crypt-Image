@@ -1,0 +1,9 @@
+language: "perl"
+perl:
+  - "5.20"
+
+install:
+    - cpanm Sparrow
+    - sparrow plg install crypt-image-smoke
+
+script: "cpanm . && sparrow plg run crypt-image-smoke"
