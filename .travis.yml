@@ -4,6 +4,6 @@ perl:
 
 install:
     - cpanm Sparrow
-    - sparrow plg install crypt-image-smoke
+    - sparrow plg install crypt-image-smoke 
 
 script: "cpanm . && sparrow plg run crypt-image-smoke"
