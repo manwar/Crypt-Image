@@ -1,0 +1,14 @@
+language: "perl"
+
+perl:
+  - "5.20"
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libgd2-noxpm-dev
+
+install:
+    - cpanm --notest -q Sparrow
+    - sparrow plg install crypt-image-smoke 
+
+script: "cpanm . && sparrow plg run crypt-image-smoke"
